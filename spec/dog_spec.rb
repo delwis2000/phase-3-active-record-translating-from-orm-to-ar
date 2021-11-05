@@ -1,6 +1,12 @@
 describe "Dog" do
   let(:teddy) { Dog.new(name: "Teddy", breed: "cockapoo") }
 
+  ActiveRecord:: Base.establish_connection(
+    adapter: "sqlite3",
+    database:"db/test.sqlite3"
+  )
+
+
   before :each do
     db = ActiveRecord::Base.connection
     db.execute("DROP TABLE IF EXISTS dogs")
